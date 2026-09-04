@@ -23,17 +23,27 @@ interface AboutPageProps {
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking }) => {
   return (
     <div className="w-full">
-      {/* 1. Page Header Banner */}
-      <section className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white py-16 sm:py-20 relative overflow-hidden">
+      {/* 1. Page Header Banner with Ambient Background */}
+      <section className="relative bg-slate-950 text-white py-16 sm:py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1920&q=80"
+            alt="Corporate office chairs and boardroom"
+            className="w-full h-full object-cover opacity-20"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/95 to-blue-950/85"></div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
           <span className="inline-block px-3.5 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-400/20">
-            Twin Cities’ Seating Mechanics
+            Twin Cities’ Seating &amp; Workstation Mechanics
           </span>
           <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
             About Furniture Master
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
-            Islamabad &amp; Rawalpindi’s dedicated doorstep office chair repair, refurbishment, and ergonomic maintenance service.
+            Islamabad &amp; Rawalpindi’s dedicated doorstep office chair repair, conference table maintenance, and ergonomic seating overhaul service.
           </p>
         </div>
       </section>
@@ -203,7 +213,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             <div className="bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-lg border border-slate-200 transition-all flex flex-col group">
               <div className="relative h-48 overflow-hidden bg-slate-100">
                 <img
-                  src="https://images.unsplash.com/photo-1580481077195-c3a82da91883?auto=format&fit=crop&w=700&q=80"
+                  src="https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&w=700&q=80"
                   alt="Office chair fully repaired and tested"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
@@ -372,10 +382,20 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
       </section>
 
       {/* 6. Bottom CTA Linking to Contact Page */}
-      <section className="py-16 bg-blue-600 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <section className="relative py-16 bg-slate-950 text-white text-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1920&q=80"
+            alt="Office boardroom"
+            className="w-full h-full object-cover opacity-15"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/85 to-slate-950/90"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white tracking-tight">
-            Ready for a Doorstep Office Chair Overhaul?
+            Ready for a Doorstep Office Seating &amp; Desk Overhaul?
           </h2>
           <p className="text-blue-100 text-base max-w-xl mx-auto">
             Contact us today for a free phone consultation or book a mobile technician to visit your office in Islamabad or Rawalpindi.
@@ -389,7 +409,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
             </button>
             <a
               href="tel:03361572145"
-              className="px-7 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm shadow-md flex items-center gap-2 transition-transform active:scale-98"
+              className="px-7 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-md flex items-center gap-2 transition-transform active:scale-98"
             >
               <Phone className="w-4 h-4 fill-current" />
               <span>Call: 0336-1572145</span>

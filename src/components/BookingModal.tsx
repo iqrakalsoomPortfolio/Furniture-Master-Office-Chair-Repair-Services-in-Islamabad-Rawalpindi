@@ -202,7 +202,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <option value="base-and-wheels">Wheels &amp; Heavy Duty Base Replacement</option>
                   <option value="mechanism-repair">Mechanism Repair &amp; Tilt-Lock Fix</option>
                   <option value="re-upholstery">Re-Upholstery &amp; Seat Foam Replacement</option>
-                  <option value="general-inspection">Complete Chair Checkup &amp; Tune-up</option>
+                  <option value="table-repair">Office Table &amp; Workstation Desks Repair</option>
+                  <option value="general-inspection">Complete Furniture Checkup &amp; Tune-up</option>
                 </select>
               </div>
 

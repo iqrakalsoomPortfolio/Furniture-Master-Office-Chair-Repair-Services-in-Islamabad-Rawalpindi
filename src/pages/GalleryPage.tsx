@@ -31,7 +31,8 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
     { id: 'gas-lift', label: 'Gas Lift' },
     { id: 'base', label: 'Base Replacement' },
     { id: 'upholstery', label: 'Upholstery' },
-    { id: 'mechanism', label: 'Mechanism' }
+    { id: 'mechanism', label: 'Mechanism' },
+    { id: 'tables', label: 'Tables & Desks' }
   ];
 
   const filteredItems = selectedFilter === 'all'
@@ -40,8 +41,18 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
 
   return (
     <div className="w-full">
-      {/* 1. Page Header */}
-      <section className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white py-16 sm:py-20 text-center relative overflow-hidden">
+      {/* 1. Page Header with Ambient Background */}
+      <section className="relative bg-slate-950 text-white py-16 sm:py-24 text-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1920&q=80"
+            alt="Office furniture and chairs repair gallery"
+            className="w-full h-full object-cover opacity-20"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/95 to-blue-950/85"></div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
           <span className="inline-block px-3.5 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-400/20">
             Real Transformations
@@ -50,7 +61,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
             Our Work &amp; Repair Gallery
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
-            Explore our on-site chair repairs, Class-4 gas lift upgrades, solid chrome base replacements, and re-upholstery jobs completed across Islamabad &amp; Rawalpindi.
+            Explore our on-site chair repairs, conference table realignments, modular workstation maintenance, and executive re-upholstery jobs completed across Islamabad &amp; Rawalpindi.
           </p>
         </div>
       </section>

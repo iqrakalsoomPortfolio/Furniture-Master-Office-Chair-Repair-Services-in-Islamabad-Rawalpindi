@@ -18,22 +18,38 @@ export default function App() {
   const [preselectedService, setPreselectedService] = useState<string | undefined>(undefined);
   const [activeLightboxItem, setActiveLightboxItem] = useState<GalleryItem | null>(null);
 
-  // Sync with window.location.hash for authentic multi-page URL support
+  // Sync with window.location.hash and pathname for robust GitHub Pages routing
   useEffect(() => {
-    const handleHashChange = () => {
+    const syncRouteFromLocation = () => {
+      // 1. Check hash first (e.g. #/about, #/services, #about)
       const hash = window.location.hash.replace('#/', '').replace('#', '').toLowerCase();
       if (['about', 'services', 'gallery', 'contact'].includes(hash)) {
         setCurrentPage(hash as PageType);
-      } else {
-        setCurrentPage('home');
+        return;
       }
+
+      // 2. Direct pathname fallback for GitHub Pages (e.g. /repo-name/services)
+      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      const lastSegment = pathSegments[pathSegments.length - 1]?.toLowerCase();
+      if (lastSegment && ['about', 'services', 'gallery', 'contact'].includes(lastSegment)) {
+        setCurrentPage(lastSegment as PageType);
+        // Normalize to hash route for consistent client-side navigation
+        window.history.replaceState(null, '', `#/${lastSegment}`);
+        return;
+      }
+
+      setCurrentPage('home');
     };
 
     // Initial check on mount
-    handleHashChange();
+    syncRouteFromLocation();
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', syncRouteFromLocation);
+    window.addEventListener('popstate', syncRouteFromLocation);
+    return () => {
+      window.removeEventListener('hashchange', syncRouteFromLocation);
+      window.removeEventListener('popstate', syncRouteFromLocation);
+    };
   }, []);
 
   const navigateTo = (page: PageType) => {

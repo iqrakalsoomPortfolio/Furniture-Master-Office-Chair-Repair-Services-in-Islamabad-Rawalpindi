@@ -17,7 +17,7 @@ export interface ServiceItem {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'gas-lift' | 'base' | 'upholstery' | 'mechanism';
+  category: 'gas-lift' | 'base' | 'upholstery' | 'mechanism' | 'tables';
   categoryLabel: string;
   beforeImage?: string;
   afterImage?: string;
@@ -29,6 +29,13 @@ export interface GalleryItem {
 }
 
 export interface ChairTypeItem {
+  name: string;
+  desc: string;
+  image: string;
+  tag: string;
+}
+
+export interface TableTypeItem {
   name: string;
   desc: string;
   image: string;

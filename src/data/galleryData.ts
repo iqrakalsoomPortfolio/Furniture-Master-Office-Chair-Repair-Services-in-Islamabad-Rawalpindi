@@ -8,7 +8,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     categoryLabel: 'Gas Lift & Base',
     chairType: 'Executive Boss Chair',
     location: 'Blue Area, Islamabad (IT Firm)',
-    image: 'https://images.unsplash.com/photo-1580481077195-c3a82da91883?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&w=1000&q=80',
     beforeImage: 'https://images.unsplash.com/photo-1505797149-43b0069ec26b?auto=format&fit=crop&w=1000&q=80',
     isBeforeAfter: true,
     description: 'The executive chair had a leaking hydraulic cylinder causing it to drop to minimum height, along with a cracked plastic star base. We installed a heavy-duty Class-4 black cylinder and a mirror-polished 350mm chrome steel base.'
@@ -133,5 +133,39 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     image: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=1000&q=80',
     isBeforeAfter: false,
     description: 'Fitted mirror-finish hospital-grade chrome base with sanitary medical-grade non-marking hooded caster wheels.'
+  },
+  {
+    id: 'gal-13',
+    title: '16-Person Boardroom Conference Table Leveling & Structural Realignment',
+    category: 'tables',
+    categoryLabel: 'Office Tables & Desks',
+    chairType: 'Conference Table & Executive Chairs',
+    location: 'Blue Area, Islamabad (Telecom Center)',
+    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1000&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=80',
+    isBeforeAfter: true,
+    description: 'Reinforced sagging central steel under-frame of an imported veneer conference table, aligned modular segments seamlessly, and replaced worn hydraulic cable box pop-ups.'
+  },
+  {
+    id: 'gal-14',
+    title: 'Corporate 32-User Modular Workstation Desks & Partition Repair',
+    category: 'tables',
+    categoryLabel: 'Office Tables & Desks',
+    chairType: 'Office Workstation Desks & Task Chairs',
+    location: 'I-9 Industrial Area, Islamabad (Software Hub)',
+    image: 'https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=1000&q=80',
+    isBeforeAfter: false,
+    description: 'Tightened wobbling desk frames, replaced jammed heavy-duty 3-stage drawer ball-bearing channels, and secured acoustic privacy partitions across 32 desks.'
+  },
+  {
+    id: 'gal-15',
+    title: 'Executive Managerial Wooden Desk Polish & Hardware Refurbishment',
+    category: 'tables',
+    categoryLabel: 'Office Tables & Desks',
+    chairType: 'Executive Office Table & Boss Leather Chair',
+    location: 'Bahria Town Phase 7, Rawalpindi',
+    image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1000&q=80',
+    isBeforeAfter: false,
+    description: 'Restored scratched walnut tabletop with scratch-resistant lacquer finish, adjusted central locking drawer mechanisms, and fitted wire management conduits.'
   }
 ];

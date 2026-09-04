@@ -7,7 +7,7 @@ export const PRIMARY_SERVICES: ServiceItem[] = [
     shortDesc: 'Fix sinking, wobbling, or stuck chairs with certified heavy-duty Class-4 pneumatic cylinders.',
     fullDesc: 'Does your executive or task chair slowly sink down as you sit, or refuse to adjust up and down? A leaking pneumatic seal is the most common office chair failure. Our certified technicians replace worn-out cylinders on-site with commercial-grade Class-4 hydraulic gas lifts capable of supporting up to 200kg (440 lbs), restoring smooth height adjustment and zero wobble.',
     iconName: 'ArrowUpDown',
-    image: 'https://images.unsplash.com/photo-1580481077195-c3a82da91883?auto=format&fit=crop&w=900&q=80', // Office chair component/ergonomic
+    image: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&w=900&q=80', // Executive ergonomic chair component & gas lift
     tag: 'Most Popular',
     startingPrice: 'Rs. 1,800',
     benefits: [
@@ -112,6 +112,61 @@ export const PRIMARY_SERVICES: ServiceItem[] = [
       'Color Palette: Corporate Black, Charcoal Grey, Navy Blue, Maroon, Tan Brown',
       'Turnaround: On-site foam replacement or 24-48h workshop turnaround for bulk lots'
     ]
+  },
+  {
+    id: 'table-repair',
+    title: 'Office Tables & Workstation Desks Repair',
+    shortDesc: 'Leveling, drawer channel replacement, leg reinforcement, and modular workstation partition maintenance.',
+    fullDesc: 'Keep your meeting rooms and staff floor immaculate. We repair wobbly conference tables, stuck or broken ball-bearing drawer slide channels on executive desks, damaged keyboard trays, loose table legs, and modular workstation divider screens directly on-site across Islamabad and Rawalpindi.',
+    iconName: 'Wrench',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80',
+    tag: 'Tables & Desks',
+    startingPrice: 'Rs. 1,500',
+    benefits: [
+      'On-site leveling and anti-wobble structural reinforcement for conference tables',
+      'Smooth heavy-duty 3-fold ball bearing drawer channel replacement',
+      'Partition screen bracket alignment & cable management box fixes',
+      'Wood and laminate touch-ups for executive managerial desks'
+    ],
+    commonSymptoms: [
+      'Conference or meeting table wobbles during meetings or presentations',
+      'Executive desk drawers get stuck, scrape, or drop off their metal tracks',
+      'Modular workstation divider screens feel loose or detached',
+      'Damaged cable pass-through grommets or sagging desk undersides'
+    ],
+    specs: [
+      'Hardware: Soft-close & telescopic 3-fold ball-bearing drawer slides (12"–22")',
+      'Reinforcement: Heavy gauge steel corner brackets and leveling feet',
+      'Compatibility: Veneer, MDF, solid wood, and metal frame workstations',
+      'Scope: Executive Desks, Conference Tables, Cluster Workstations, Reception Counters'
+    ]
+  }
+];
+
+export const TABLE_TYPES_SERVICED = [
+  {
+    name: 'Conference & Boardroom Tables',
+    desc: 'Large 8 to 24-seater executive meeting tables with built-in cable grommets and heavy pedestals',
+    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80',
+    tag: 'Boardroom Tables'
+  },
+  {
+    name: 'Modular Office Workstation Desks',
+    desc: '2-way, 4-way & 6-way cluster team desks with acoustic privacy dividers and wire raceways',
+    image: 'https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=600&q=80',
+    tag: 'Workstations'
+  },
+  {
+    name: 'Executive Boss Desks & Credenzas',
+    desc: 'Heavy wooden managerial tables with multi-drawer pedestals, side returns, and privacy modesty panels',
+    image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=600&q=80',
+    tag: 'Executive Desks'
+  },
+  {
+    name: 'Computer Desks & Reception Counters',
+    desc: 'Single user office desks, computer study tables, and welcoming front reception lobby desks',
+    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=80',
+    tag: 'Lobby & Computer'
   }
 ];
 
@@ -146,7 +201,7 @@ export const CHAIR_TYPES_SERVICED = [
   { 
     name: 'Executive High-Back Chairs', 
     desc: 'Heavy genuine & faux leather boss chairs with multi-lock tilt synchronizer',
-    image: 'https://images.unsplash.com/photo-1580481077195-c3a82da91883?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&w=600&q=80',
     tag: 'Leather & Boss'
   },
   { 

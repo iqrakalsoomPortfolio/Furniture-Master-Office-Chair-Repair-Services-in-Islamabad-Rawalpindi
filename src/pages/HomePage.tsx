@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageType, GalleryItem } from '../types';
-import { PRIMARY_SERVICES, WHY_CHOOSE_US_POINTS, CHAIR_TYPES_SERVICED } from '../data/servicesData';
+import { PRIMARY_SERVICES, WHY_CHOOSE_US_POINTS, CHAIR_TYPES_SERVICED, TABLE_TYPES_SERVICED } from '../data/servicesData';
 import { GALLERY_ITEMS } from '../data/galleryData';
 import { TESTIMONIALS } from '../data/testimonialsData';
 import { 
@@ -22,7 +22,8 @@ import {
   Calendar,
   MessageCircle,
   HelpCircle,
-  Sparkles
+  Sparkles,
+  LayoutGrid
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -37,6 +38,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenLightbox 
 }) => {
   const [selectedIssue, setSelectedIssue] = useState<number>(0);
+  const [furnitureTab, setFurnitureTab] = useState<'chairs' | 'tables'>('chairs');
 
   const commonIssues = [
     {
@@ -46,7 +48,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       eta: '15-20 minutes on-site',
       warranty: '6 Months Replacement Warranty',
       approxCost: 'From Rs. 1,800',
-      image: 'https://images.unsplash.com/photo-1580481077195-c3a82da91883?auto=format&fit=crop&w=400&q=80'
+      image: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&w=600&q=80'
     },
     {
       title: 'Broken wheels or scratches on floor tiles',
@@ -83,6 +85,15 @@ export const HomePage: React.FC<HomePageProps> = ({
       warranty: '1 Year Stitching & Foam Warranty',
       approxCost: 'From Rs. 2,500',
       image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      title: 'Wobbly conference table or jammed desk drawers',
+      serviceId: 'table-repair',
+      solution: 'Bolts tightened, structural leveling adjusted, and smooth 3-stage ball-bearing drawer slide channels fitted.',
+      eta: '20-30 minutes on-site',
+      warranty: '6 Months Replacement Warranty',
+      approxCost: 'From Rs. 1,500',
+      image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=400&q=80'
     }
   ];
 
@@ -115,75 +126,126 @@ export const HomePage: React.FC<HomePageProps> = ({
   return (
     <div className="w-full">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[580px] lg:min-h-[640px] flex items-center bg-slate-950 text-white overflow-hidden">
+      <section className="relative min-h-[580px] lg:min-h-[660px] flex items-center bg-slate-950 text-white overflow-hidden">
         {/* Background Image with Dark Vignette & Gradient Overlays */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
-            alt="Office chair repair workshop"
-            className="w-full h-full object-cover opacity-25 scale-105 transform motion-safe:animate-pulse motion-safe:duration-[10000ms]"
+            alt="Office furniture and chair repair workshop"
+            className="w-full h-full object-cover opacity-20 scale-105"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-blue-950/75"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/95 to-blue-950/80"></div>
           <div className="absolute inset-0 bg-radial-at-c from-transparent via-transparent to-black/60"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="max-w-3xl space-y-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Location Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs sm:text-sm font-semibold backdrop-blur-xs">
-              <MapPin className="w-4 h-4 text-amber-400" />
-              <span>Doorstep Repairs Across Islamabad &amp; Rawalpindi</span>
+            {/* Left Content Column (7 cols) */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              {/* Location Pill */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs sm:text-sm font-semibold backdrop-blur-xs">
+                <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>Doorstep Repairs Across Islamabad &amp; Rawalpindi</span>
+              </div>
+
+              {/* Headline */}
+              <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-heading font-extrabold tracking-tight text-white leading-tight">
+                Professional Office Chairs &amp; Desks Repair in{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-amber-300">
+                  Islamabad &amp; Rawalpindi
+                </span>
+              </h1>
+
+              {/* Subheadline */}
+              <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
+                Get your office chairs, conference tables, and workstation desks repaired at your doorstep by <strong>Furniture Master</strong>. Genuine Class-4 gas lifts, heavy-duty chrome bases, floor-safe wheels, and table hardware installed on-site.
+              </p>
+
+              {/* Two Primary CTAs */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                <button
+                  id="hero-book-now-btn"
+                  onClick={() => onOpenBooking()}
+                  className="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-base shadow-xl shadow-blue-600/30 hover:shadow-blue-500/40 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Calendar className="w-5 h-5" />
+                  <span>Book a Repair Now</span>
+                </button>
+
+                <a
+                  id="hero-call-now-btn"
+                  href="tel:03361572145"
+                  className="px-7 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base shadow-lg shadow-amber-400/20 active:scale-98 transition-all flex items-center justify-center gap-2.5"
+                >
+                  <Phone className="w-5 h-5 fill-current text-slate-950" />
+                  <span>Call: 0336-1572145</span>
+                </a>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="pt-6 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-slate-300">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>100% On-Site Doorstep Service</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
+                  <span>6 Months Free Warranty</span>
+                </div>
+                <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
+                  <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Same-Day 60-Min Arrival</span>
+                </div>
+              </div>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight text-white leading-tight">
-              Professional Office Chair Repair Services in{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-amber-300">
-                Islamabad &amp; Rawalpindi
-              </span>
-            </h1>
+            {/* Right: Rich Visual Showcase of Office Chairs & Tables (5 cols) */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700/80 bg-slate-900 group">
+                <img
+                  src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=900&q=80"
+                  alt="Modern office chairs, conference tables and workstations repaired by Furniture Master"
+                  className="w-full h-[400px] sm:h-[440px] object-cover group-hover:scale-103 transition-transform duration-700"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
 
-            {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl">
-              Get your office chairs fixed at your doorstep by <strong>Furniture Master</strong>. We bring genuine Class-4 gas lifts, heavy-duty chrome bases, floor-safe wheels, and mechanism parts directly to your location.
-            </p>
+                {/* Overlaid Badges */}
+                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold shadow-md">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                    <span>Office Chairs &amp; Desks</span>
+                  </span>
+                </div>
 
-            {/* Two Primary CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-              <button
-                id="hero-book-now-btn"
-                onClick={() => onOpenBooking()}
-                className="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-base shadow-xl shadow-blue-600/30 hover:shadow-blue-500/40 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Calendar className="w-5 h-5" />
-                <span>Book a Repair Now</span>
-              </button>
+                <div className="absolute top-4 right-4">
+                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/90 text-white text-xs font-bold shadow-md backdrop-blur-xs">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>Certified Parts</span>
+                  </span>
+                </div>
 
-              <a
-                id="hero-call-now-btn"
-                href="tel:03361572145"
-                className="px-7 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base shadow-lg shadow-amber-400/20 active:scale-98 transition-all flex items-center justify-center gap-2.5"
-              >
-                <Phone className="w-5 h-5 fill-current text-slate-950" />
-                <span>Call: 0336-1572145</span>
-              </a>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="pt-6 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-slate-300">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>100% On-Site Doorstep Service</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>6 Months Free Warranty</span>
-              </div>
-              <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
-                <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Same-Day 60-Min Arrival</span>
+                {/* Bottom Content within Image Card */}
+                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-slate-900/85 backdrop-blur-md border border-slate-700/80 text-left">
+                  <div className="flex items-center justify-between text-xs text-amber-300 font-semibold mb-1">
+                    <span>Active Mobile Service Unit</span>
+                    <span className="text-emerald-400 flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                      On Road Now
+                    </span>
+                  </div>
+                  <h3 className="font-heading font-bold text-white text-sm sm:text-base">
+                    Chairs, Boardroom Tables &amp; Workstations
+                  </h3>
+                  <div className="flex items-center gap-3 mt-2 text-[11px] text-slate-300">
+                    <span className="bg-slate-800 px-2 py-0.5 rounded-md border border-slate-700">Gas Lifts</span>
+                    <span className="bg-slate-800 px-2 py-0.5 rounded-md border border-slate-700">Chrome Bases</span>
+                    <span className="bg-slate-800 px-2 py-0.5 rounded-md border border-slate-700">Drawer Slides</span>
+                    <span className="bg-slate-800 px-2 py-0.5 rounded-md border border-slate-700">Table Legs</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -261,25 +323,45 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
-            {/* Left: Image with Overlaid Experience Badge */}
+            {/* Left: Dual Image Collage of Office Chairs & Tables */}
             <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-100">
-                <img
-                  src="https://images.unsplash.com/photo-1580481077195-c3a82da91883?auto=format&fit=crop&w=1000&q=80"
-                  alt="Technician repairing executive office chair"
-                  className="w-full h-[420px] object-cover hover:scale-102 transition-transform duration-500"
-                  referrerPolicy="no-referrer"
-                />
+              <div className="grid grid-cols-12 gap-4">
+                <div className="col-span-7 rounded-2xl overflow-hidden shadow-xl border border-slate-100 h-80 sm:h-96">
+                  <img
+                    src="https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&w=800&q=80"
+                    alt="Technician repairing executive office chair"
+                    className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="col-span-5 space-y-4">
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-100 h-[152px] sm:h-[184px]">
+                    <img
+                      src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=500&q=80"
+                      alt="Boardroom conference tables and executive seating"
+                      className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-100 h-[152px] sm:h-[184px]">
+                    <img
+                      src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=500&q=80"
+                      alt="Office workstation desks and ergonomic chairs"
+                      className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Floating Experience Badge */}
-              <div className="absolute -bottom-6 -right-6 bg-slate-900 text-white p-5 rounded-2xl shadow-xl border border-slate-800 max-w-[240px] hidden sm:block">
+              <div className="absolute -bottom-6 -left-3 sm:left-4 bg-slate-900 text-white p-4 sm:p-5 rounded-2xl shadow-xl border border-slate-800 max-w-[270px]">
                 <div className="flex items-center gap-2 text-amber-400 mb-1">
                   <Star className="w-5 h-5 fill-current" />
                   <span className="font-extrabold text-xl">15,000+</span>
                 </div>
                 <p className="text-xs text-slate-300 font-medium">
-                  Chairs successfully repaired across Islamabad &amp; Rawalpindi.
+                  Office Chairs, Boardroom Tables &amp; Desks restored in Islamabad &amp; Rawalpindi.
                 </p>
               </div>
             </div>
@@ -291,16 +373,16 @@ export const HomePage: React.FC<HomePageProps> = ({
                   Who We Are
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-slate-900 mt-3 tracking-tight">
-                  The Trusted Office Chair Repair Specialists in Twin Cities
+                  The Trusted Office Seating &amp; Workstation Specialists
                 </h2>
               </div>
 
               <p className="text-slate-600 text-base leading-relaxed">
-                Founded with a mission to eliminate workplace discomfort and excessive corporate replacement spending, <strong>Furniture Master</strong> is Islamabad and Rawalpindi’s premier on-site office chair repair workshop.
+                Founded with a mission to eliminate workplace discomfort and excessive corporate replacement spending, <strong>Furniture Master</strong> is Islamabad and Rawalpindi’s premier on-site repair workshop for office chairs, meeting tables, and computer workstations.
               </p>
 
               <p className="text-slate-600 text-base leading-relaxed">
-                Whether you have a single executive leather chair in your home study or 200 workstation chairs in a Blue Area software house, our mobile technician vans carry high-precision tools and certified commercial-grade replacement components right to your door.
+                Whether you have a single executive leather chair in your home study or 200 workstation chairs and meeting tables in a Blue Area software house, our mobile technician vans carry high-precision tools and certified commercial-grade replacement components right to your door.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -318,7 +400,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-700 font-medium">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>On-the-Spot Diagnostics</span>
+                  <span>Conference Table &amp; Drawer Channel Repairs</span>
                 </div>
               </div>
 
@@ -363,7 +445,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {PRIMARY_SERVICES.map((service) => (
               <div 
                 key={service.id}
@@ -421,6 +503,93 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Genuine Spare Parts Visual Showcase */}
+          <div className="mt-14 pt-12 border-t border-slate-200">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">
+                  Original Factory Inventory
+                </span>
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-slate-900 mt-1">
+                  Genuine Replacement Hardware Carried in Mobile Repair Vans
+                </h3>
+              </div>
+              <span className="text-xs font-semibold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shrink-0">
+                100% Guaranteed Fit &amp; Warranty
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+              <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-md transition-shadow group">
+                <div className="h-36 overflow-hidden bg-slate-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&w=500&q=80"
+                    alt="Class-4 BIFMA Certified Gas Lift Hydraulic Cylinder"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-3.5 text-left">
+                  <h4 className="font-heading font-bold text-slate-900 text-xs sm:text-sm">
+                    Class-4 Nitrogen Gas Cylinder
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Heavy-duty 200kg rated nitrogen seal</p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-md transition-shadow group">
+                <div className="h-36 overflow-hidden bg-slate-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1505797149-43b0069ec26b?auto=format&fit=crop&w=500&q=80"
+                    alt="350mm Mirror-Polished Chrome Spider Base"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-3.5 text-left">
+                  <h4 className="font-heading font-bold text-slate-900 text-xs sm:text-sm">
+                    350mm Solid Chrome Spider Base
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Die-cast reinforced steel, zero crack</p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-md transition-shadow group">
+                <div className="h-36 overflow-hidden bg-slate-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=500&q=80"
+                    alt="Multi-Lock Butterfly Recline & Tilt Mechanism"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-3.5 text-left">
+                  <h4 className="font-heading font-bold text-slate-900 text-xs sm:text-sm">
+                    Multi-Lock Tilt Mechanism
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Synchronous recline and tension spring</p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-md transition-shadow group">
+                <div className="h-36 overflow-hidden bg-slate-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=500&q=80"
+                    alt="High Resilience 50D Molded Orthopedic Foam"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-3.5 text-left">
+                  <h4 className="font-heading font-bold text-slate-900 text-xs sm:text-sm">
+                    50D Molded Cushion Foam
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Anti-sagging breathable comfort foam</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="text-center mt-12">
@@ -560,63 +729,139 @@ export const HomePage: React.FC<HomePageProps> = ({
             ))}
           </div>
 
-          {/* Chair Types We Service with Real Images */}
-          <div className="mt-16 bg-white rounded-3xl p-8 border border-slate-200 text-left shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          {/* Chair & Table Types We Service with Real Images */}
+          <div className="mt-16 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 text-left shadow-sm">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
               <div>
-                <h3 className="font-heading font-bold text-2xl text-slate-900 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-blue-600" />
-                  <span>All Models &amp; Brands of Office Chairs Serviced</span>
+                <h3 className="font-heading font-bold text-2xl sm:text-3xl text-slate-900 flex items-center gap-2.5">
+                  <CheckCircle2 className="w-7 h-7 text-blue-600 shrink-0" />
+                  <span>Office Furniture We Service Across Twin Cities</span>
                 </h3>
                 <p className="text-slate-600 text-sm mt-1">
-                  From executive boss chairs to mesh task seating and gaming chairs in Islamabad &amp; Rawalpindi.
+                  On-site diagnostics and repairs for all models of office seating, boardroom tables, and workstations.
                 </p>
               </div>
-              <button
-                onClick={() => onNavigate('services')}
-                className="text-blue-600 hover:text-blue-700 font-bold text-xs sm:text-sm flex items-center gap-1 cursor-pointer shrink-0"
-              >
-                <span>View Service Details</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+
+              {/* Interactive Tabs: Chairs vs Tables */}
+              <div className="flex items-center bg-slate-100 p-1 rounded-xl shrink-0 self-start md:self-auto">
+                <button
+                  type="button"
+                  onClick={() => setFurnitureTab('chairs')}
+                  className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                    furnitureTab === 'chairs'
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Office Chairs (6 Models)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFurnitureTab('tables')}
+                  className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                    furnitureTab === 'tables'
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Tables &amp; Desks (4 Types)
+                </button>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {CHAIR_TYPES_SERVICED.map((chair, i) => (
-                <div 
-                  key={i} 
-                  className="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/50 hover:bg-white hover:shadow-md transition-all flex flex-col group"
-                >
-                  <div className="relative h-44 overflow-hidden bg-slate-200">
-                    <img
-                      src={chair.image}
-                      alt={chair.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
-                    <span className="absolute top-3 left-3 text-[11px] font-bold px-2.5 py-1 rounded-md bg-blue-600 text-white shadow-xs">
-                      {chair.tag}
-                    </span>
-                  </div>
-                  <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
-                    <div>
-                      <h4 className="font-heading font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors">
-                        {chair.name}
-                      </h4>
-                      <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                        {chair.desc}
-                      </p>
+            {/* Display Chairs Grid */}
+            {furnitureTab === 'chairs' && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {CHAIR_TYPES_SERVICED.map((chair, i) => (
+                  <div 
+                    key={i} 
+                    className="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/50 hover:bg-white hover:shadow-md transition-all flex flex-col group"
+                  >
+                    <div className="relative h-44 overflow-hidden bg-slate-200">
+                      <img
+                        src={chair.image}
+                        alt={chair.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
+                      <span className="absolute top-3 left-3 text-[11px] font-bold px-2.5 py-1 rounded-md bg-blue-600 text-white shadow-xs">
+                        {chair.tag}
+                      </span>
                     </div>
-                    <button
-                      onClick={() => onOpenBooking(chair.name)}
-                      className="w-full py-2 rounded-lg bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-semibold text-xs transition-colors cursor-pointer text-center"
-                    >
-                      Book Repair for This Type
-                    </button>
+                    <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                      <div>
+                        <h4 className="font-heading font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors">
+                          {chair.name}
+                        </h4>
+                        <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                          {chair.desc}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => onOpenBooking(chair.name)}
+                        className="w-full py-2 rounded-lg bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-semibold text-xs transition-colors cursor-pointer text-center"
+                      >
+                        Book Repair for This Chair
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            )}
+
+            {/* Display Tables Grid */}
+            {furnitureTab === 'tables' && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {TABLE_TYPES_SERVICED.map((table, i) => (
+                  <div 
+                    key={i} 
+                    className="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/50 hover:bg-white hover:shadow-md transition-all flex flex-col group"
+                  >
+                    <div className="relative h-44 overflow-hidden bg-slate-200">
+                      <img
+                        src={table.image}
+                        alt={table.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
+                      <span className="absolute top-3 left-3 text-[11px] font-bold px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 shadow-xs">
+                        {table.tag}
+                      </span>
+                    </div>
+                    <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                      <div>
+                        <h4 className="font-heading font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors">
+                          {table.name}
+                        </h4>
+                        <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                          {table.desc}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => onOpenBooking(table.name)}
+                        className="w-full py-2 rounded-lg bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-semibold text-xs transition-colors cursor-pointer text-center"
+                      >
+                        Book Repair for This Table
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-xs text-slate-500 text-center sm:text-left">
+                Need urgent bulk maintenance for 10+ chairs or whole office workstation desks?
+              </p>
+              <button
+                onClick={() => onNavigate('services')}
+                className="text-blue-600 hover:text-blue-700 font-bold text-xs sm:text-sm flex items-center gap-1.5 cursor-pointer shrink-0"
+              >
+                <span>Explore All 5 Office Services</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
 
@@ -756,15 +1001,25 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 8. CTA BANNER (Full-width blue section with both numbers) */}
-      <section className="py-16 bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-blue-100 text-xs font-semibold backdrop-blur-xs">
+      {/* 8. CTA BANNER (Full-width blue section with both numbers & ambient background) */}
+      <section className="relative py-16 bg-slate-950 text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1920&q=80"
+            alt="Office boardroom and conference tables"
+            className="w-full h-full object-cover opacity-15"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/85 to-slate-950/90"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-blue-200 text-xs font-semibold backdrop-blur-xs border border-white/10">
             Same-Day Dispatch Available Right Now
           </span>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white tracking-tight max-w-3xl mx-auto">
-            Need Your Office Chair Fixed Today? Call or WhatsApp Us Now!
+            Need Office Chairs or Tables Fixed Today? Call or WhatsApp Us!
           </h2>
 
           <p className="text-blue-100 text-base sm:text-lg max-w-2xl mx-auto">
@@ -792,7 +1047,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <button
               onClick={() => onOpenBooking()}
-              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-slate-900 hover:bg-slate-950 text-white font-bold text-base shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-colors"
+              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-base shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-colors"
             >
               <Calendar className="w-5 h-5" />
               <span>Book Online</span>

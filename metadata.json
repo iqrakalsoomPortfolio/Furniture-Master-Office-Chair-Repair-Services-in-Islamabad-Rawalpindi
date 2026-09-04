@@ -1,6 +1,6 @@
 {
   "name": "Furniture Master",
-  "description": "Professional office chair repair and maintenance service in Islamabad & Rawalpindi, Pakistan. Doorstep hydraulic gas lift replacement, wheels, bases, mechanisms, and re-upholstery.",
+  "description": "Professional office chair and table repair service in Islamabad & Rawalpindi, Pakistan. Doorstep hydraulic gas lift replacement, wheels, bases, mechanisms, desks, and re-upholstery.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

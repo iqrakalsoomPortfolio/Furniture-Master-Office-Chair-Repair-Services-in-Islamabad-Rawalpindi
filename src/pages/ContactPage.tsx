@@ -44,8 +44,18 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="w-full">
-      {/* 1. Page Header */}
-      <section className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white py-16 sm:py-20 text-center relative overflow-hidden">
+      {/* 1. Page Header with Ambient Background */}
+      <section className="relative bg-slate-950 text-white py-16 sm:py-24 text-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
+            alt="Office furniture and chair service customer support"
+            className="w-full h-full object-cover opacity-20"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/95 to-blue-950/85"></div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
           <span className="inline-block px-3.5 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-400/20">
             Immediate Response
@@ -54,7 +64,7 @@ export const ContactPage: React.FC = () => {
             Get In Touch
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
-            Book a doorstep chair repair technician or get an instant quote. We are active across all sectors of Islamabad and Rawalpindi.
+            Book a doorstep chair &amp; table repair technician or get an instant quote. We are active across all sectors of Islamabad and Rawalpindi.
           </p>
         </div>
       </section>
@@ -166,8 +176,9 @@ export const ContactPage: React.FC = () => {
                       <option value="Heavy Duty Wheels & Chrome Base">Heavy Duty Wheels &amp; Nylon / Chrome Base</option>
                       <option value="Mechanism Repair & Tilt Control">Mechanism Repair &amp; Tilt Control</option>
                       <option value="Executive Re-Upholstery & Foam">Re-Upholstery &amp; High-Density Foam</option>
-                      <option value="Corporate Office Chair AMC / Bulk">Corporate Office Chairs Inspection (Bulk)</option>
-                      <option value="Other Chair Issue">Other / General Inspection</option>
+                      <option value="Office Tables & Workstation Repair">Office Tables, Desks &amp; Workstations Repair</option>
+                      <option value="Corporate Office Chair AMC / Bulk">Corporate Office Chairs &amp; Desks AMC (Bulk)</option>
+                      <option value="Other Chair Issue">Other / General Furniture Inspection</option>
                     </select>
                   </div>
 

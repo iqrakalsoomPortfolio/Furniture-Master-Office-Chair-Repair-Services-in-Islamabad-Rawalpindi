@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PageType } from '../types';
-import { PRIMARY_SERVICES } from '../data/servicesData';
+import { PRIMARY_SERVICES, CHAIR_TYPES_SERVICED, TABLE_TYPES_SERVICED } from '../data/servicesData';
 import { 
   ArrowUpDown, 
   Disc, 
@@ -27,6 +27,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
   onNavigate, 
   onOpenBooking 
 }) => {
+  const [activeCategory, setActiveCategory] = useState<'chairs' | 'tables'>('chairs');
+
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
       case 'ArrowUpDown': return <ArrowUpDown className="w-6 h-6" />;
@@ -39,17 +41,27 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
   return (
     <div className="w-full">
-      {/* 1. Page Header */}
-      <section className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white py-16 sm:py-20 text-center relative overflow-hidden">
+      {/* 1. Page Header with Office Background */}
+      <section className="relative bg-slate-950 text-white py-16 sm:py-24 text-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
+            alt="Office furniture and chair repair service"
+            className="w-full h-full object-cover opacity-20"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/95 to-blue-950/85"></div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
           <span className="inline-block px-3.5 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-400/20">
             Professional Doorstep Solutions
           </span>
           <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
-            Our Office Chair Repair Services
+            Office Chairs &amp; Workstations Repair Services
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
-            Heavy-duty Class-4 cylinders, 350mm reinforced bases, smooth PU wheels, precision mechanisms, and custom re-upholstery across Islamabad &amp; Rawalpindi.
+            Class-4 gas cylinders, heavy-duty chrome bases, PU caster wheels, reclining mechanisms, custom upholstery, and conference table hardware across Islamabad &amp; Rawalpindi.
           </p>
         </div>
       </section>
@@ -190,7 +202,134 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
         </div>
       </section>
 
-      {/* 3. Transparent Pricing Matrix */}
+      {/* 3. Furniture Models & Types Serviced with Rich Photos */}
+      <section className="py-16 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 text-left">
+            <div>
+              <span className="text-blue-600 font-bold text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-md">
+                Furniture Scope
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-slate-900 mt-2">
+                Office Chairs, Desks &amp; Tables We Service
+              </h2>
+              <p className="text-slate-600 text-sm mt-1">
+                Explore supported chair types and office table styles serviced across Islamabad &amp; Rawalpindi.
+              </p>
+            </div>
+
+            {/* Tabs */}
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl shrink-0 self-start md:self-auto">
+              <button
+                type="button"
+                onClick={() => setActiveCategory('chairs')}
+                className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  activeCategory === 'chairs'
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Chairs (6 Types)
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveCategory('tables')}
+                className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  activeCategory === 'tables'
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Tables &amp; Desks (4 Types)
+              </button>
+            </div>
+          </div>
+
+          {/* Chairs Showcase */}
+          {activeCategory === 'chairs' && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+              {CHAIR_TYPES_SERVICED.map((chair, i) => (
+                <div 
+                  key={i} 
+                  className="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/50 hover:bg-white hover:shadow-md transition-all flex flex-col group"
+                >
+                  <div className="relative h-48 overflow-hidden bg-slate-200">
+                    <img
+                      src={chair.image}
+                      alt={chair.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
+                    <span className="absolute top-3 left-3 text-[11px] font-bold px-2.5 py-1 rounded-md bg-blue-600 text-white shadow-xs">
+                      {chair.tag}
+                    </span>
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                    <div>
+                      <h4 className="font-heading font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors">
+                        {chair.name}
+                      </h4>
+                      <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                        {chair.desc}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => onOpenBooking(chair.name)}
+                      className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-semibold text-xs transition-colors cursor-pointer text-center"
+                    >
+                      Book Repair for This Chair
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Tables Showcase */}
+          {activeCategory === 'tables' && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+              {TABLE_TYPES_SERVICED.map((table, i) => (
+                <div 
+                  key={i} 
+                  className="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/50 hover:bg-white hover:shadow-md transition-all flex flex-col group"
+                >
+                  <div className="relative h-48 overflow-hidden bg-slate-200">
+                    <img
+                      src={table.image}
+                      alt={table.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
+                    <span className="absolute top-3 left-3 text-[11px] font-bold px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 shadow-xs">
+                      {table.tag}
+                    </span>
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                    <div>
+                      <h4 className="font-heading font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors">
+                        {table.name}
+                      </h4>
+                      <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                        {table.desc}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => onOpenBooking(table.name)}
+                      className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-semibold text-xs transition-colors cursor-pointer text-center"
+                    >
+                      Book Repair for This Table
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* 4. Transparent Pricing Matrix */}
       <section className="py-16 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
@@ -247,9 +386,15 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                     <td className="px-6 py-4 text-xs font-medium text-emerald-600">1 Year Stitching</td>
                     <td className="px-6 py-4 text-right font-bold text-slate-900">Rs. 2,500 – 4,500</td>
                   </tr>
+                  <tr className="hover:bg-slate-50/50">
+                    <td className="px-6 py-4 font-semibold text-slate-900">Table &amp; Desk Drawer Channels / Leveling</td>
+                    <td className="px-6 py-4 text-xs text-slate-500">3-Fold ball-bearing slides, wobble realignment &amp; hardware</td>
+                    <td className="px-6 py-4 text-xs font-medium text-emerald-600">6 Months On-Site</td>
+                    <td className="px-6 py-4 text-right font-bold text-slate-900">Rs. 1,500 – 2,500</td>
+                  </tr>
                   <tr className="bg-blue-50/40">
-                    <td className="px-6 py-4 font-semibold text-blue-900">Corporate Bulk Servicing (10+ chairs)</td>
-                    <td className="px-6 py-4 text-xs text-slate-600">Includes lubrications, screw tightening &amp; inspection</td>
+                    <td className="px-6 py-4 font-semibold text-blue-900">Corporate Bulk Servicing (10+ units)</td>
+                    <td className="px-6 py-4 text-xs text-slate-600">Full office chairs &amp; workstations maintenance audit</td>
                     <td className="px-6 py-4 text-xs font-medium text-emerald-600">Full AMC Support</td>
                     <td className="px-6 py-4 text-right font-bold text-blue-700">Special Discount</td>
                   </tr>
@@ -257,30 +402,40 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
               </table>
             </div>
             <div className="p-4 bg-slate-50 border-t border-slate-200 text-xs text-slate-500 flex flex-wrap justify-between items-center gap-2">
-              <span>* Exact cost depends on chair make and model. Free diagnosis upon inspection.</span>
+              <span>* Exact cost depends on chair/table make and model. Free diagnosis upon inspection.</span>
               <span className="font-semibold text-slate-700">No Hidden Visiting Charges on Completed Jobs</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Bottom CTA: "Don't see your issue listed? Call us!" */}
-      <section className="py-16 bg-blue-600 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-xs font-semibold">
+      {/* 5. Bottom CTA: "Don't see your issue listed? Call us!" */}
+      <section className="relative py-16 bg-slate-950 text-white text-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1920&q=80"
+            alt="Office furniture workshop"
+            className="w-full h-full object-cover opacity-15"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/85 to-slate-950/90"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-xs font-semibold backdrop-blur-xs border border-white/10">
             Custom Repair Requests Welcome
           </span>
           <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight">
-            Don’t See Your Specific Chair Issue Listed?
+            Need Custom Chair or Desk Repairs?
           </h2>
           <p className="text-blue-100 text-base sm:text-lg max-w-2xl mx-auto">
-            Call or WhatsApp us — we fix all types of office chairs, ergonomic gaming chairs, Herman Miller mesh seats, and imported executive models!
+            Call or WhatsApp us — we fix all types of office chairs, conference tables, computer workstations, and executive leather models!
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <a
               href="tel:03361572145"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-base shadow-lg flex items-center justify-center gap-2.5 transition-transform active:scale-98"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base shadow-lg flex items-center justify-center gap-2.5 transition-transform active:scale-98"
             >
               <Phone className="w-5 h-5 fill-current" />
               <span>Call: 0336-1572145</span>
@@ -296,7 +451,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
             <button
               onClick={() => onOpenBooking()}
-              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-base border border-white/30 backdrop-blur-xs flex items-center justify-center gap-2 cursor-pointer transition-colors"
+              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-base border border-blue-400/40 backdrop-blur-xs flex items-center justify-center gap-2 cursor-pointer transition-colors shadow-lg"
             >
               <Calendar className="w-5 h-5" />
               <span>Book Inspection</span>
