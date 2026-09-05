@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageType, GalleryItem } from './types';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
@@ -21,24 +22,38 @@ export default function App() {
   // Sync with window.location.hash and pathname for robust GitHub Pages routing
   useEffect(() => {
     const syncRouteFromLocation = () => {
-      // 1. Check hash first (e.g. #/about, #/services, #about)
-      const hash = window.location.hash.replace('#/', '').replace('#', '').toLowerCase();
-      if (['about', 'services', 'gallery', 'contact'].includes(hash)) {
-        setCurrentPage(hash as PageType);
-        return;
-      }
+      try {
+        // 1. Check hash first (e.g. #/about, #/services, #about, #/services/)
+        const hash = window.location.hash
+          .replace(/^#\/?/, '')
+          .split('?')[0]
+          .replace(/\/$/, '')
+          .toLowerCase();
 
-      // 2. Direct pathname fallback for GitHub Pages (e.g. /repo-name/services)
-      const pathSegments = window.location.pathname.split('/').filter(Boolean);
-      const lastSegment = pathSegments[pathSegments.length - 1]?.toLowerCase();
-      if (lastSegment && ['about', 'services', 'gallery', 'contact'].includes(lastSegment)) {
-        setCurrentPage(lastSegment as PageType);
-        // Normalize to hash route for consistent client-side navigation
-        window.history.replaceState(null, '', `#/${lastSegment}`);
-        return;
-      }
+        if (['about', 'services', 'gallery', 'contact'].includes(hash)) {
+          setCurrentPage(hash as PageType);
+          return;
+        }
 
-      setCurrentPage('home');
+        // 2. Direct pathname fallback for GitHub Pages (e.g. /repo-name/services or /services/)
+        const pathSegments = window.location.pathname.split('/').filter(Boolean);
+        const lastSegment = pathSegments[pathSegments.length - 1]
+          ?.split('?')[0]
+          .replace(/\/$/, '')
+          .toLowerCase();
+
+        if (lastSegment && ['about', 'services', 'gallery', 'contact'].includes(lastSegment)) {
+          setCurrentPage(lastSegment as PageType);
+          // Normalize to hash route for consistent client-side navigation
+          window.history.replaceState(null, '', `#/${lastSegment}`);
+          return;
+        }
+
+        setCurrentPage('home');
+      } catch (err) {
+        console.error('Routing sync error:', err);
+        setCurrentPage('home');
+      }
     };
 
     // Initial check on mount
@@ -89,39 +104,50 @@ export default function App() {
 
       {/* Main Page Routing Container */}
       <main className="flex-1 w-full animate-in fade-in duration-300">
-        {currentPage === 'home' && (
-          <HomePage 
-            onNavigate={navigateTo} 
-            onOpenBooking={handleOpenBooking} 
-            onOpenLightbox={handleOpenLightbox} 
-          />
-        )}
+        <ErrorBoundary>
+          {currentPage === 'home' && (
+            <HomePage 
+              onNavigate={navigateTo} 
+              onOpenBooking={handleOpenBooking} 
+              onOpenLightbox={handleOpenLightbox} 
+            />
+          )}
 
-        {currentPage === 'about' && (
-          <AboutPage 
-            onNavigate={navigateTo} 
-            onOpenBooking={() => handleOpenBooking()} 
-          />
-        )}
+          {currentPage === 'about' && (
+            <AboutPage 
+              onNavigate={navigateTo} 
+              onOpenBooking={() => handleOpenBooking()} 
+            />
+          )}
 
-        {currentPage === 'services' && (
-          <ServicesPage 
-            onNavigate={navigateTo} 
-            onOpenBooking={handleOpenBooking} 
-          />
-        )}
+          {currentPage === 'services' && (
+            <ServicesPage 
+              onNavigate={navigateTo} 
+              onOpenBooking={handleOpenBooking} 
+            />
+          )}
 
-        {currentPage === 'gallery' && (
-          <GalleryPage 
-            onNavigate={navigateTo} 
-            onOpenBooking={() => handleOpenBooking()} 
-            onOpenLightbox={handleOpenLightbox} 
-          />
-        )}
+          {currentPage === 'gallery' && (
+            <GalleryPage 
+              onNavigate={navigateTo} 
+              onOpenBooking={() => handleOpenBooking()} 
+              onOpenLightbox={handleOpenLightbox} 
+            />
+          )}
 
-        {currentPage === 'contact' && (
-          <ContactPage />
-        )}
+          {currentPage === 'contact' && (
+            <ContactPage />
+          )}
+
+          {/* Guaranteed fallback to HomePage if currentPage is an unrecognized route */}
+          {!['home', 'about', 'services', 'gallery', 'contact'].includes(currentPage) && (
+            <HomePage 
+              onNavigate={navigateTo} 
+              onOpenBooking={handleOpenBooking} 
+              onOpenLightbox={handleOpenLightbox} 
+            />
+          )}
+        </ErrorBoundary>
       </main>
 
       {/* Standard 4-Column Footer */}
