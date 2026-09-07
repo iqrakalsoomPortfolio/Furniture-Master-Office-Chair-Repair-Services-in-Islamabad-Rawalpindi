@@ -1,0 +1,6 @@
+# Robots.txt for Furniture Master - Office Chair & Table Repair Islamabad & Rawalpindi
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://iqrakalsoom128.github.io/Furniture-Master-Office-Chair-Repair-Services-in-Islamabad-Rawalpindi/sitemap.xml

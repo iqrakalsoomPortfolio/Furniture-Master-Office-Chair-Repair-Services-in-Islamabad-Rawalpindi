@@ -3,6 +3,7 @@ import { PageType, GalleryItem } from '../types';
 import { PRIMARY_SERVICES, WHY_CHOOSE_US_POINTS, CHAIR_TYPES_SERVICED, TABLE_TYPES_SERVICED } from '../data/servicesData';
 import { GALLERY_ITEMS } from '../data/galleryData';
 import { TESTIMONIALS } from '../data/testimonialsData';
+import { FAQSection } from '../components/FAQSection';
 import { 
   Phone, 
   ArrowRight, 
@@ -1000,6 +1001,9 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         </div>
       </section>
+
+      {/* 7.5 FREQUENTLY ASKED QUESTIONS (Rich Snippet & Local SEO Powerhouse) */}
+      <FAQSection />
 
       {/* 8. CTA BANNER (Full-width blue section with both numbers & ambient background) */}
       <section className="relative py-16 bg-slate-950 text-white overflow-hidden">

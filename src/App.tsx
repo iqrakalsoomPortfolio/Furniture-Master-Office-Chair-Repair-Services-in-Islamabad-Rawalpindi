@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageType, GalleryItem } from './types';
+import { updatePageSeo } from './utils/seo';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -67,20 +68,15 @@ export default function App() {
     };
   }, []);
 
+  // Update dynamic SEO meta tags (title, description, canonical, OG) whenever page changes
+  useEffect(() => {
+    updatePageSeo(currentPage);
+  }, [currentPage]);
+
   const navigateTo = (page: PageType) => {
     setCurrentPage(page);
     window.location.hash = page === 'home' ? '#/' : `#/${page}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Update document title for SEO
-    const pageTitles: Record<PageType, string> = {
-      home: 'Furniture Master | Office Chair Repair Islamabad & Rawalpindi',
-      about: 'About Furniture Master | 10+ Years Office Chair Mechanics Twin Cities',
-      services: 'Our Repair Services | Gas Lifts, Bases, Wheels & Upholstery',
-      gallery: 'Work Gallery & Transformations | Furniture Master Islamabad',
-      contact: 'Contact & Doorstep Booking | Furniture Master Twin Cities'
-    };
-    document.title = pageTitles[page] || 'Furniture Master | Office Chair Repair';
   };
 
   const handleOpenBooking = (serviceId?: string) => {

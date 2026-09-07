@@ -238,6 +238,51 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
 
         </div>
 
+        {/* Local SEO Keywords & Covered Sectors Index */}
+        <div className="mt-10 pt-8 border-t border-slate-800/80 text-xs text-slate-400 space-y-4">
+          <div>
+            <span className="font-semibold text-slate-300 block mb-1.5 uppercase tracking-wider text-[11px]">
+              Doorstep Coverage Across Islamabad:
+            </span>
+            <p className="leading-relaxed text-slate-400">
+              Blue Area, F-6, F-7, F-8, F-10, F-11, G-6, G-7, G-8, G-9, G-10, G-11, I-8, I-9, I-10, DHA Phase 1 &amp; 2, Bahria Town Islamabad, E-7, E-11, H-8, H-9, H-12 (NUST), Chak Shahzad, Park View City.
+            </p>
+          </div>
+          <div>
+            <span className="font-semibold text-slate-300 block mb-1.5 uppercase tracking-wider text-[11px]">
+              Doorstep Coverage Across Rawalpindi:
+            </span>
+            <p className="leading-relaxed text-slate-400">
+              Saddar, Satellite Town, Westridge, Peshawar Road, Chaklala Scheme 3, Shamsabad, Commercial Market, Bahria Town Rawalpindi (Phases 1-8), Gulraiz Housing Scheme, Askari 1-14, Adyala Road, Rawal Road.
+            </p>
+          </div>
+          <div>
+            <span className="font-semibold text-slate-300 block mb-1.5 uppercase tracking-wider text-[11px]">
+              Specialized Service Keywords:
+            </span>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {[
+                'Office Chair Repair Islamabad',
+                'Hydraulic Gas Lift Cylinder Replacement',
+                'Doorstep Chair Mechanic Rawalpindi',
+                'Office Chair Wheel Replacement',
+                'Heavy Duty 5-Star Base Repair',
+                'Executive Chair Re-Upholstery',
+                'Office Desk & Workstation Repair',
+                'Revolving Chair Repair Blue Area',
+                'Chair Tilt Mechanism Repair',
+                'Sinking Office Chair Fix',
+                'Corporate Furniture AMC Islamabad',
+                'Same-Day Chair Repair Twin Cities'
+              ].map((tag, idx) => (
+                <span key={idx} className="bg-slate-900 border border-slate-800 text-slate-400 px-2.5 py-1 rounded-md text-[11px]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© 2025 Furniture Master. All Rights Reserved. Islamabad &amp; Rawalpindi, Pakistan.</p>
