@@ -22,15 +22,7 @@ function copyIndexTo404() {
 }
 
 export default defineConfig(() => {
-  // GitHub Pages needs the repository path.
-  // Vercel needs the root path "/".
-  const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
-
-  const base =
-    process.env.VITE_BASE_PATH ||
-    (isGitHubPages
-      ? '/Furniture-Master-Office-Chair-Repair-Services-in-Islamabad-Rawalpindi/'
-      : '/');
+  const base = process.env.VITE_BASE_PATH || '/';
 
   return {
     base,

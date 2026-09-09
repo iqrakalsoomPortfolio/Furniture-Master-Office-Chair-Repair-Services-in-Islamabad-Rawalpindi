@@ -7,8 +7,8 @@
 
   <!-- Home Page -->
   <url>
-    <loc>https://iqrakalsoom128.github.io/Furniture-Master-Office-Chair-Repair-Services-in-Islamabad-Rawalpindi/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <loc>https://furniture-master-office-chair-repai.vercel.app/</loc>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -20,8 +20,8 @@
 
   <!-- Repair Services Page -->
   <url>
-    <loc>https://iqrakalsoom128.github.io/Furniture-Master-Office-Chair-Repair-Services-in-Islamabad-Rawalpindi/#/services</loc>
-    <lastmod>2026-09-06</lastmod>
+    <loc>https://furniture-master-office-chair-repai.vercel.app/services</loc>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -31,28 +31,28 @@
     </image:image>
   </url>
 
-  <!-- Contact and Doorstep Booking Page -->
-  <url>
-    <loc>https://iqrakalsoom128.github.io/Furniture-Master-Office-Chair-Repair-Services-in-Islamabad-Rawalpindi/#/contact</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
   <!-- About Us Page -->
   <url>
-    <loc>https://iqrakalsoom128.github.io/Furniture-Master-Office-Chair-Repair-Services-in-Islamabad-Rawalpindi/#/about</loc>
-    <lastmod>2026-09-06</lastmod>
+    <loc>https://furniture-master-office-chair-repai.vercel.app/about</loc>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Gallery and Work Portfolio Page -->
   <url>
-    <loc>https://iqrakalsoom128.github.io/Furniture-Master-Office-Chair-Repair-Services-in-Islamabad-Rawalpindi/#/gallery</loc>
-    <lastmod>2026-09-06</lastmod>
+    <loc>https://furniture-master-office-chair-repai.vercel.app/gallery</loc>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Contact and Doorstep Booking Page -->
+  <url>
+    <loc>https://furniture-master-office-chair-repai.vercel.app/contact</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
 </urlset>

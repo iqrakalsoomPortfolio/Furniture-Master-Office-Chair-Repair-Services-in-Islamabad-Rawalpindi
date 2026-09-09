@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://iqrakalsoom128.github.io/Furniture-Master-Office-Chair-Repair-Services-in-Islamabad-Rawalpindi/sitemap.xml
+Sitemap: https://furniture-master-office-chair-repai.vercel.app/sitemap.xml
