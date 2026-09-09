@@ -12,31 +12,31 @@ export const SEO_METADATA_BY_PAGE: Record<PageType, PageSeoMetadata> = {
     title: 'Office Chair & Table Repair Islamabad & Rawalpindi | Doorstep Service | Furniture Master',
     description: 'No.1 Doorstep office chair & table repair service in Islamabad & Rawalpindi. Heavy-duty Class-4 gas lift replacement, wheels, bases, mechanisms & upholstery with 6-month warranty. Call 0336-1572145.',
     canonicalPath: '',
-    keywords: 'office chair repair islamabad, chair repair rawalpindi, hydraulic gas lift replacement islamabad, doorstep chair repair twin cities, office furniture repair'
+    keywords: 'office chair repair islamabad, chair repair rawalpindi, revolving chair repair near me, kursi repair islamabad, kursi repairing rawalpindi, kursi repair karnay wala, kursi mechanic near me, kursi ka shock change, chair ka pump repair, office furniture mistri islamabad, hydraulic gas lift replacement islamabad, office chair gas cylinder change, chair wheels replacement, executive chair repair rawalpindi, boss chair repair islamabad, gaming chair repair islamabad, computer chair repair twin cities, office furniture repair blue area islamabad, chair repair saddar rawalpindi, bahria town chair repair, dha islamabad chair repair, office table repair islamabad, sinking chair fix doorstep'
   },
   services: {
     title: 'Chair & Table Repair Services Islamabad & Rawalpindi | Gas Lifts, Wheels, Bases & Foam',
     description: 'Specialized doorstep repair services across Islamabad & Rawalpindi: Class-4 hydraulic gas lifts, scratch-free PU wheels, chrome spider bases, tilt locks, and ergonomic executive re-upholstery.',
     canonicalPath: '#/services',
-    keywords: 'hydraulic cylinder repair islamabad, chair wheel replacement rawalpindi, office chair mechanism repair, chair upholstery islamabad, desk repair rawalpindi'
+    keywords: 'hydraulic cylinder repair islamabad, chair wheel replacement rawalpindi, revolving chair gas lift price, office chair mechanism repair, chair upholstery islamabad, boss chair foam repair, gaming chair mechanism replacement, table repair rawalpindi, workstation drawer channel repair'
   },
   about: {
     title: 'About Furniture Master | 10+ Years Office Furniture Mechanics in Islamabad & Rawalpindi',
     description: 'Meet Islamabad and Rawalpindi\'s leading office chair repair specialists. Over 10 years of trusted on-site service for multinational firms, government offices, co-working spaces, and home offices.',
     canonicalPath: '#/about',
-    keywords: 'about furniture master, office chair mechanics twin cities, commercial furniture repair islamabad'
+    keywords: 'about furniture master, office chair mechanics twin cities, commercial furniture repair islamabad, revolving chair mistri rawalpindi, corporate furniture AMC islamabad'
   },
   gallery: {
     title: 'Work Gallery & Before-After Transformations | Furniture Master Islamabad & Rawalpindi',
     description: 'View genuine before-and-after photographs of executive chairs, ergonomic mesh seating, and office tables repaired and restored across Islamabad and Rawalpindi.',
     canonicalPath: '#/gallery',
-    keywords: 'chair repair gallery islamabad, executive chair restoration photos rawalpindi, office chair repair portfolio'
+    keywords: 'chair repair gallery islamabad, executive chair restoration photos rawalpindi, office chair repair portfolio, revolving chair before after photos'
   },
   contact: {
     title: 'Contact & Book Doorstep Chair Repair | Islamabad & Rawalpindi | 0336-1572145',
     description: 'Schedule a doorstep office chair mechanic across Islamabad & Rawalpindi. 60–90 minute rapid dispatch in Blue Area, F-Sectors, G-Sectors, I-Sectors, Saddar, DHA, and Bahria Town. Call 0336-1572145.',
     canonicalPath: '#/contact',
-    keywords: 'contact furniture master, chair repair phone number islamabad, whatsapp chair repair rawalpindi'
+    keywords: 'contact furniture master, chair repair phone number islamabad, whatsapp chair repair rawalpindi, doorstep chair mechanic contact 03361572145, office chair emergency repair twin cities'
   }
 };
 

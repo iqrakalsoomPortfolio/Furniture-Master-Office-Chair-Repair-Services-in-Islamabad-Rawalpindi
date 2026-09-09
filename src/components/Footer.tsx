@@ -263,19 +263,34 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             <div className="flex flex-wrap gap-1.5 pt-1">
               {[
                 'Office Chair Repair Islamabad',
-                'Hydraulic Gas Lift Cylinder Replacement',
-                'Doorstep Chair Mechanic Rawalpindi',
-                'Office Chair Wheel Replacement',
-                'Heavy Duty 5-Star Base Repair',
-                'Executive Chair Re-Upholstery',
-                'Office Desk & Workstation Repair',
+                'Chair Repair Rawalpindi',
+                'Office Chair Repair Near Me',
+                'Kursi Repair Karnay Wala',
+                'Kursi Theek Karne Wala Islamabad',
                 'Revolving Chair Repair Blue Area',
-                'Chair Tilt Mechanism Repair',
-                'Sinking Office Chair Fix',
+                'Chair Repair Saddar Rawalpindi',
+                'Kursi Repairing Twin Cities',
+                'Chair Ka Hydraulic Shock / Pump',
+                'Hydraulic Gas Lift Cylinder Replacement',
+                'Revolving Chair Gas Cylinder Change',
+                'Office Chair Wheel Replacement',
+                'Kursi Pahiye / Wheel Change',
+                'Heavy Duty 5-Star Chrome Base Repair',
+                'Executive Chair Re-Upholstery',
+                'Boss Chair Cushion & Foam Change',
+                'Gaming Chair Repair Islamabad',
+                'Computer Chair Repair Saddar Rawalpindi',
+                'Office Desk & Workstation Repair',
+                'Office Furniture Mistri Islamabad',
+                'Conference Table Repair Rawalpindi',
+                'Sinking Office Chair Fix Doorstep',
+                'Chair Tilt Mechanism & Lock Repair',
+                'Bahria Town & DHA Chair Repair',
+                'F-8 F-10 F-11 G-9 G-10 I-8 Chair Repair',
                 'Corporate Furniture AMC Islamabad',
-                'Same-Day Chair Repair Twin Cities'
+                'Doorstep Mechanic 0336-1572145'
               ].map((tag, idx) => (
-                <span key={idx} className="bg-slate-900 border border-slate-800 text-slate-400 px-2.5 py-1 rounded-md text-[11px]">
+                <span key={idx} className="bg-slate-900/90 hover:bg-slate-800 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md text-[11px] transition-colors">
                   {tag}
                 </span>
               ))}

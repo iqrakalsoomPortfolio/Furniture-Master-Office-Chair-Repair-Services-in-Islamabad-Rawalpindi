@@ -36,6 +36,16 @@ export const FAQS_DATA: FAQItem[] = [
     answer: 'Yes. In addition to revolving chairs, we repair conference tables, executive computer desks, loose legs, wooden chips, workstation leveling, telescopic ball-bearing drawer slide channels, and office drawer locks.'
   },
   {
+    category: 'Gaming & Boss Chairs',
+    question: 'Do you repair gaming chairs, boss chairs, and high-back executive computer chairs?',
+    answer: 'Yes! We repair all models of gaming chairs, imported executive boss chairs, ergonomic mesh chairs, and computer desk chairs. Common fixes include heavy-duty Class-4 gas lift replacement for heavy weight capacity, reclining backrest tilt repair, 4D armrest adjustment, and 350mm chrome spider base upgrades.'
+  },
+  {
+    category: 'Urgent Booking & Near Me',
+    question: 'How can I book an urgent doorstep revolving chair mechanic near me in Islamabad or Rawalpindi?',
+    answer: 'Booking is quick and hassle-free: simply call or send a WhatsApp message with a photo of your chair to 0336-1572145. Our mobile technician squad serves Blue Area, F-Sectors, G-Sectors, I-Sectors, Saddar, Bahria Town, and DHA with same-day 60-to-90 minute doorstep dispatch.'
+  },
+  {
     category: 'Bulk Corporate AMC',
     question: 'Do you provide annual maintenance contracts (AMC) for corporate offices and software houses?',
     answer: 'Yes, we provide corporate repair and quarterly maintenance packages for IT companies, call centers, embassies, government departments, and banks with 10 to 500+ chairs across the Twin Cities.'
